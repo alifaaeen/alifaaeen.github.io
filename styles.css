@@ -319,6 +319,7 @@ nav {
     margin-top: 50px;
     position: relative;
     display: flex;
+    justify-content: center;
 }
 
 .testimonial {
@@ -327,7 +328,6 @@ nav {
     border-radius: 15px;
     padding: 20px;
     margin: 10px;
-    position: relative;
     width: 400px;
 }
 
@@ -530,6 +530,7 @@ footer {
 
     .testimonial {
         width: 90%;
+        margin: 10px auto 10px auto;
     }
 }
 

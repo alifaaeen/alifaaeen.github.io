@@ -243,23 +243,6 @@ nav {
     margin-bottom: 30px;
 }
 
-/* What I Do Section */
-.what-i-do {
-    margin-bottom: 80px;
-}
-
-.what-i-do h2 {
-    color: #b17aff;
-    font-size: 32px;
-    margin-bottom: 30px;
-}
-
-.what-i-do p {
-    color: rgba(255, 255, 255, 0.7);
-    line-height: 1.8;
-    margin-bottom: 20px;
-}
-
 /* Services Section */
 .services-grid {
     display: grid;
@@ -533,6 +516,20 @@ footer {
         width: 100%;
         margin-left: 0;
         margin-top: 30px;
+        text-align: center;
+    }
+
+    .hero p {
+        max-width: 100% !important;
+        width: 100% !important;
+    }
+
+    .testimonials {
+        flex-direction: column;
+    }
+
+    .testimonial {
+        width: 100%;
     }
 }
 

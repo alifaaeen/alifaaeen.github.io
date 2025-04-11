@@ -3,158 +3,380 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="styles.css">
-    <title>Arslan.</title>
+    <meta name="description" content="Arslan - Spreadsheet Automation Specialist offering Excel, Google Sheets, and Python automation services">
+    <title>Arslan - Spreadsheet Automation Specialist</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        theme: {
+                            'text-secondary': '#4B5563',
+                            'dark-text-secondary': '#9CA3AF'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        [x-cloak] { display: none !important; }
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
 </head>
-<body>
-    <div class="container">
-        <nav>
-            <div class="logo">Arslan.</div>
-            <div class="nav-links">
-                <a href="mailto:meemalifaaeen@gmail.com" onclick="window.open(this.href, '_blank'); return false;">Hire Me</a>
-
+<body class="bg-white dark:bg-gray-900">
+    <!-- Header -->
+    <header class="sticky top-0 z-50">
+        <div class="absolute inset-0 bg-white/70 dark:bg-gray-900/80 backdrop-blur-md border-b border-indigo-100/30 dark:border-indigo-900/30 z-0"></div>
+        <div class="container mx-auto px-4 py-4 flex items-center justify-between relative z-10">
+            <div class="flex items-center">
+                <a href="/" class="text-3xl font-bold text-indigo-600 dark:text-indigo-400" aria-label="Home">Arslan.</a>
+            </div>
+            <nav class="hidden md:flex items-center justify-center flex-1" aria-label="Main navigation">
+                <div class="flex items-center space-x-8">
+                    <a href="#home" class="text-theme-text-secondary dark:text-theme-dark-text-secondary hover:text-indigo-600 dark:hover:text-indigo-400 transition">Home</a>
+                    <a href="#about" class="text-theme-text-secondary dark:text-theme-dark-text-secondary hover:text-indigo-600 dark:hover:text-indigo-400 transition">About</a>
+                    <a href="#services" class="text-theme-text-secondary dark:text-theme-dark-text-secondary hover:text-indigo-600 dark:hover:text-indigo-400 transition">Services</a>
+                    <a href="#testimonials" class="text-theme-text-secondary dark:text-theme-dark-text-secondary hover:text-indigo-600 dark:hover:text-indigo-400 transition">Testimonials</a>
+                    <a href="#contact" class="text-theme-text-secondary dark:text-theme-dark-text-secondary hover:text-indigo-600 dark:hover:text-indigo-400 transition">Contact</a>
+                </div>
+            </nav>
+            <div class="flex items-center space-x-4">
+                <!-- Dark Mode Toggle for Desktop -->
+                <button id="theme-toggle" class="hidden md:block p-2 text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 focus:outline-none" aria-label="Toggle dark mode">
+                    <svg id="sun-icon" class="h-6 w-6 hidden dark:block" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                    </svg>
+                    <svg id="moon-icon" class="h-6 w-6 block dark:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                    </svg>
+                </button>
+                <a href="mailto:meemalifaaeen@gmail.com" class="hidden md:block bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700 transition dark:bg-indigo-700 dark:hover:bg-indigo-600 shadow-md hover:shadow-lg">Hire Me</a>
+            </div>
+            
+            <!-- Mobile Menu Button -->
+            <div class="md:hidden flex items-center space-x-4">
+                <!-- Dark Mode Toggle for Mobile -->
+                <button id="mobile-theme-toggle" class="p-2 text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 focus:outline-none" aria-label="Toggle dark mode">
+                    <svg id="mobile-sun-icon" class="h-6 w-6 hidden dark:block" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                    </svg>
+                    <svg id="mobile-moon-icon" class="h-6 w-6 block dark:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                    </svg>
+                </button>
+                <button id="mobile-menu-button" class="text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 focus:outline-none" aria-label="Toggle mobile menu">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu (Hidden by default) -->
+        <nav id="mobile-menu" class="hidden md:hidden absolute w-full bg-white/90 dark:bg-gray-900/90 backdrop-blur-md border-b border-indigo-100/30 dark:border-indigo-900/30 z-20" aria-label="Mobile navigation">
+            <div class="flex-grow flex flex-col justify-center relative">
+                <div class="px-4 py-8 space-y-6 relative">
+                    <a href="#home" class="block text-xl text-center py-4 text-theme-text-secondary dark:text-theme-dark-text-secondary hover:text-indigo-600 dark:hover:text-indigo-400">Home</a>
+                    <a href="#about" class="block text-xl text-center py-4 text-theme-text-secondary dark:text-theme-dark-text-secondary hover:text-indigo-600 dark:hover:text-indigo-400">About</a>
+                    <a href="#services" class="block text-xl text-center py-4 text-theme-text-secondary dark:text-theme-dark-text-secondary hover:text-indigo-600 dark:hover:text-indigo-400">Services</a>
+                    <a href="#testimonials" class="block text-xl text-center py-4 text-theme-text-secondary dark:text-theme-dark-text-secondary hover:text-indigo-600 dark:hover:text-indigo-400">Testimonials</a>
+                    <a href="#contact" class="block text-xl text-center py-4 text-theme-text-secondary dark:text-theme-dark-text-secondary hover:text-indigo-600 dark:hover:text-indigo-400">Contact</a>
+                    <div class="flex justify-center pt-4">
+                        <a href="mailto:meemalifaaeen@gmail.com" class="px-6 py-3 bg-indigo-600 text-white rounded-lg font-semibold hover:bg-indigo-700 transition dark:bg-indigo-700 dark:hover:bg-indigo-600 shadow-md hover:shadow-lg">Hire Me</a>
+                    </div>
+                </div>
             </div>
         </nav>
+    </header>
 
-        <div class="dots-decoration dots-1"></div>
-        <div class="dots-decoration dots-2"></div>
-        <div class="star-decoration star-1"></div>
-        <div class="star-decoration star-2"></div>
-
-        <section id="home" class="hero fade-in">
-        	<div class="hero-image">
-                <img src="assets/arslan.png" alt="Arslan">
-                <div class="decoration hero-decorator-1">+</div>
-                <div class="decoration hero-decorator-2">+</div>
-            </div>
-        	<div class="hero-content">
-                <h1>Hi, I'm <span>Arslan</span></h1>
-                <h2>Spreadsheet Automation Specialist</h2>
-                <p>With over 3 years of experience in automation and data processing, I’m here to help make your tasks easier and your work more efficient.</p>
-            </div>
-        </section>
-
-        <section id="about" class="section fade-in">
-            <h2 class="section-title">ABOUT ME</h2>
-            <p class="about-text">
-                I’m a freelance professional based in Islamabad, Pakistan 🇵🇰, with over three years of experience in automating workflows and creating tailored applications using Excel and Google Sheets.
-                <br><br>
-				My Excel journey started way back in 2022, when I read a quote that stayed with me: <i>"The economy of this world runs on two things—petrol and Excel."</i> It was a straightforward quote, but it made me realize the potential of Excel, and since then, I committed myself to learning it. Over the years, I’ve helped countless clients leverage Excel to optimize their workflows, elevate their business processes, and take their operations to new heights.
-				<br><br>
-				I’ve worked on platforms like Upwork and Fiverr, completing more than 500 projects, all with five-star ratings. Each project taught me something new, but the satisfaction of helping clients transform their work through automation is what truly drives me.
-				<br><br>
-				Aside from my expertise in Excel, I’m also a Chartered Accountant student, on my way to becoming a Chartered Accountant, InshaAllah. This background has given me a solid understanding of accounting and tax, which has been invaluable as I’ve worked with some of Pakistan’s largest companies, helping them doing their of taxes and accounting.
-				<br><br>
-				With all that experience under my belt, I'm here to assist you in reaching your objectives. We can work together to streamline your processes and bring your business to the next level.
-            </p>
-        </section>
-
-        <!-- <section id="portfolio" class="section fade-in">
-            <h2 class="section-title">PORTFOLIO</h2>
-            <div class="portfolio-grid">
-                <div class="portfolio-item">
-                    <img src="https://placehold.co/290x200" alt="Animal Sheet Project">
-                </div>
-                <div class="portfolio-item">
-                    <img src="https://placehold.co/290x200" alt="Purple Device Project">
-                </div>
-                <div class="portfolio-item">
-                    <img src="https://placehold.co/290x200" alt="Suplo Store Project">
-                </div>
-                <div class="portfolio-item">
-                    <img src="https://placehold.co/290x200" alt="Coffee and Notes Project">
-                </div>
-            </div>
-        </section> -->
-
-        <section id="services" class="section fade-in">
-            <h2 class="section-title">Services</h2>
-            <div class="services-grid">
-                <div class="services-column">
-                    <div class="service-item">
-                        <i>✓</i>
-                        <span>Microsoft Excel (VBA)</span>
-                    </div>
-                    <div class="service-item">
-                        <i>✓</i>
-                        <span>Google Sheets (Apps Script)</span>
-                    </div>
-                    <div class="service-item">
-                        <i>✓</i>
-                        <span>Python Automation</span>
-                    </div>
-                </div>
-                <div class="services-column">
-                    <div class="service-item">
-                        <i>✓</i>
-                        <span>Web Scraping</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="skills" class="section fade-in">
-            <h2 class="section-title">Testimonials</h2>
-
-            <div class="testimonials">
-                <div class="testimonial">
-                    <p class="testimonial-text">Working with Arslan was a dream honestly. The response time an professionalism was unmatched, and he continuously guided me through my questions. He walked me through everything he did to help until I was satisfied. Thank you Arslan.</p>
-                    <div class="testimonial-author">
-                        <div>
-                            <div class="testimonial-name">calgaryismep</div>
-                            <div class="testimonial-position">🇨🇦 Canada</div>
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="relative py-24 sm:py-32 overflow-hidden" aria-labelledby="hero-heading">
+            <div class="absolute inset-0 bg-gradient-to-br from-indigo-600/90 to-purple-600/90 dark:from-indigo-800/90 dark:to-purple-800/90 z-0"></div>
+            <div class="container mx-auto px-4 relative z-10">
+                <div class="flex flex-col md:flex-row items-center">
+                    <div class="md:w-1/2 mb-10 md:mb-0">
+                        <h1 id="hero-heading" class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-white">Spreadsheet Automation Specialist</h1>
+                        <p class="text-xl mb-8 text-indigo-100">With over 3 years of experience in automation and data processing, I'm here to help make your tasks easier and your work more efficient.</p>
+                        <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                            <a href="mailto:meemalifaaeen@gmail.com" class="flex items-center justify-center px-8 py-3 bg-white text-indigo-600 rounded-lg font-semibold hover:bg-indigo-50 transition shadow-lg">
+                                Hire Me
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                    <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                </svg>
+                            </a>
                         </div>
                     </div>
-                </div>
-                <div class="testimonial">
-                    <p class="testimonial-text">Another successful task completed by Arslan in actually one day not two. Even though I cannot articulate completely in "tech" terms, Arslan somehow knows what I mean and exactly what is needed. He has made my life so much easier, so much more streamlined and accurate. Thank you Arslan.</p>
-                    <div class="testimonial-author">
-                        <div>
-                            <div class="testimonial-name">valbrewster</div>
-                            <div class="testimonial-position">🇬🇧 United Kingdom</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial">
-                    <p class="testimonial-text">Arslan is my go-to professional for anything related to Google Sheets and macros. His expertise and efficiency have made a significant impact on my projects. He not only delivers high-quality work consistently but also offers valuable insights that enhance our workflows. Highly recommended for anyone needing top-notch spreadsheet solutions!</p>
-                    <div class="testimonial-author">
-                        <div>
-                            <div class="testimonial-name">Gil V</div>
-                            <div class="testimonial-position">🇺🇸 United States of America</div>
-                        </div>
+                    <div class="md:w-1/2 flex justify-center">
+                        <img src="assets/hero_img.png" alt="Arslan" class="w-80 h-80 object-cover rounded-full border-4 border-white/20 shadow-2xl">
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="contact" class="contact fade-in">
-            <h2 class="section-title">Get in touch.</h2>
-            <div class="contact-container">
-                <div class="contact-left">
-                    <div class="contact-form">
-                       <div class="contact-info">
-                        <div class="contact-info-title">Email</div>
-	                        <div class="contact-info-content">meemalifaaeen@gmail.com</div>
-	                    </div>
-	                    <div class="social-icons">
-	                        <a href="https://www.fiverr.com/meemalifaaeen" class="social-icon" target="_blank">
-	                        	<img src="assets/fiverr.svg">
-	                        </a>
-	                        <a href="https://www.upwork.com/freelancers/~016cbc4535ac1533ef" class="social-icon" target="_blank">
-	                        	<img src="assets/upwork.svg">
-	                        </a>
-	                        <a href="https://github.com/alifaaeen" class="social-icon" target="_blank">
-	                        	<img src="assets/github.svg">
-	                        </a>
-	                    </div>
+        <!-- About Section -->
+        <section id="about" class="py-20 relative overflow-hidden" aria-labelledby="about-heading">
+            <div class="absolute inset-0 bg-gradient-to-bl from-indigo-50/90 to-purple-50/90 dark:from-indigo-950/90 dark:to-purple-950/90 z-0"></div>
+            <div class="container mx-auto px-4 relative z-10">
+                <div class="text-center mb-16">
+                    <h2 id="about-heading" class="text-3xl md:text-4xl font-bold mb-4 text-indigo-700 dark:text-indigo-400">About Me</h2>
+                    <p class="text-xl text-indigo-600/80 dark:text-indigo-300/80 max-w-3xl mx-auto">Freelance professional based in Islamabad, Pakistan 🇵🇰</p>
+                </div>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+                    <article class="space-y-8">
+                        <figure class="relative">
+                            <div class="absolute inset-0 bg-gradient-to-br from-indigo-600/20 to-purple-600/20 dark:from-indigo-400/20 dark:to-purple-400/20 rounded-2xl transform rotate-3"></div>
+                            <img src="assets/arslan.png" alt="Arslan" class="relative rounded-2xl shadow-2xl w-full h-auto object-cover">
+                        </figure>
+                        
+                        <div class="grid grid-cols-2 gap-6">
+                            <article class="bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm p-6 rounded-xl shadow-lg border border-indigo-100/80 dark:border-indigo-700/50 transform transition-transform hover:scale-105">
+                                <div class="text-4xl font-bold text-indigo-600 dark:text-indigo-400 mb-2">3+</div>
+                                <div class="text-indigo-600/80 dark:text-indigo-400/80">Years Experience</div>
+                            </article>
+                            <article class="bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm p-6 rounded-xl shadow-lg border border-indigo-100/80 dark:border-indigo-700/50 transform transition-transform hover:scale-105">
+                                <div class="text-4xl font-bold text-indigo-600 dark:text-indigo-400 mb-2">500+</div>
+                                <div class="text-indigo-600/80 dark:text-indigo-400/80">Projects Completed</div>
+                            </article>
+                            <article class="bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm p-6 rounded-xl shadow-lg border border-indigo-100/80 dark:border-indigo-700/50 transform transition-transform hover:scale-105">
+                                <div class="text-4xl font-bold text-indigo-600 dark:text-indigo-400 mb-2">100%</div>
+                                <div class="text-indigo-600/80 dark:text-indigo-400/80">Client Satisfaction</div>
+                            </article>
+                            <article class="bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm p-6 rounded-xl shadow-lg border border-indigo-100/80 dark:border-indigo-700/50 transform transition-transform hover:scale-105">
+                                <div class="text-4xl font-bold text-indigo-600 dark:text-indigo-400 mb-2">24/7</div>
+                                <div class="text-indigo-600/80 dark:text-indigo-400/80">Support Available</div>
+                            </article>
+                        </div>
+                    </article>
+
+                    <div class="space-y-8">
+                        <article class="bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm p-8 rounded-xl shadow-lg border border-indigo-100/80 dark:border-indigo-700/50">
+                            <h3 class="text-2xl font-semibold mb-6 text-indigo-700 dark:text-indigo-300">My Journey</h3>
+                            <div class="space-y-6">
+                                <p class="text-indigo-600/80 dark:text-indigo-400/80">
+                                    I'm a freelance professional with over three years of experience in automating workflows and creating tailored applications using Excel and Google Sheets.
+                                </p>
+                                <p class="text-indigo-600/80 dark:text-indigo-400/80">
+                                    My Excel journey started way back in 2022, when I read a quote that stayed with me: <i class="text-indigo-700 dark:text-indigo-300">"The economy of this world runs on two things—petrol and Excel."</i> It was a straightforward quote, but it made me realize the potential of Excel, and since then, I committed myself to learning it.
+                                </p>
+                                <p class="text-indigo-600/80 dark:text-indigo-400/80">
+                                    I've worked on platforms like Upwork and Fiverr, completing more than 500 projects, all with five-star ratings. Each project taught me something new, but the satisfaction of helping clients transform their work through automation is what truly drives me.
+                                </p>
+                            </div>
+                        </article>
+
+                        <article class="bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm p-8 rounded-xl shadow-lg border border-indigo-100/80 dark:border-indigo-700/50">
+                            <h3 class="text-2xl font-semibold mb-6 text-indigo-700 dark:text-indigo-300">Education & Background</h3>
+                            <div class="space-y-4">
+                                <div class="flex items-start">
+                                    <div class="bg-indigo-100 dark:bg-indigo-900/30 p-2 rounded-full mr-4">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-indigo-600 dark:text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z" />
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z" />
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z" />
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold text-indigo-700 dark:text-indigo-300">Chartered Accountant Student</h4>
+                                        <p class="text-indigo-600/80 dark:text-indigo-400/80">On the path to becoming a Chartered Accountant, InshaAllah</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <div class="bg-indigo-100 dark:bg-indigo-900/30 p-2 rounded-full mr-4">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-indigo-600 dark:text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold text-indigo-700 dark:text-indigo-300">Freelance Professional</h4>
+                                        <p class="text-indigo-600/80 dark:text-indigo-400/80">Specializing in Excel and Google Sheets Automation</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
                     </div>
                 </div>
             </div>
         </section>
 
-        <footer>
-            <p>Made with ❤️ by Arslan</p>
-        </footer>
-    </div>
+        <!-- Services Section -->
+        <section id="services" class="py-20 relative overflow-hidden" aria-labelledby="services-heading">
+            <div class="absolute inset-0 bg-gradient-to-tr from-purple-50/90 to-indigo-50/90 dark:from-purple-950/90 dark:to-indigo-950/90 z-0"></div>
+            <div class="container mx-auto px-4 relative z-10">
+                <div class="text-center mb-16">
+                    <h2 id="services-heading" class="text-3xl md:text-4xl font-bold mb-4 text-indigo-700 dark:text-indigo-400">My Services</h2>
+                    <p class="text-xl text-indigo-600/80 dark:text-indigo-300/80 max-w-3xl mx-auto">Comprehensive spreadsheet automation solutions for your business needs</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <article class="bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm p-8 rounded-xl shadow-lg border border-indigo-100/80 dark:border-indigo-700/50 transform transition-transform hover:scale-105 hover:shadow-xl">
+                        <div class="bg-indigo-100/80 dark:bg-indigo-900/30 p-3 rounded-full w-14 h-14 flex items-center justify-center mb-6">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-indigo-600 dark:text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3 text-indigo-700 dark:text-indigo-300">Microsoft Excel (VBA)</h3>
+                        <p class="text-indigo-600/80 dark:text-indigo-400/80">Custom Excel solutions with VBA programming for automated workflows and data processing.</p>
+                    </article>
+                    <article class="bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm p-8 rounded-xl shadow-lg border border-indigo-100/80 dark:border-indigo-700/50 transform transition-transform hover:scale-105 hover:shadow-xl">
+                        <div class="bg-indigo-100/80 dark:bg-indigo-900/30 p-3 rounded-full w-14 h-14 flex items-center justify-center mb-6">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-indigo-600 dark:text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3 text-indigo-700 dark:text-indigo-300">Google Sheets (Apps Script)</h3>
+                        <p class="text-indigo-600/80 dark:text-indigo-400/80">Automated Google Sheets solutions using Apps Script for seamless data management.</p>
+                    </article>
+                    <article class="bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm p-8 rounded-xl shadow-lg border border-indigo-100/80 dark:border-indigo-700/50 transform transition-transform hover:scale-105 hover:shadow-xl">
+                        <div class="bg-indigo-100/80 dark:bg-indigo-900/30 p-3 rounded-full w-14 h-14 flex items-center justify-center mb-6">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-indigo-600 dark:text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3 text-indigo-700 dark:text-indigo-300">Python Automation</h3>
+                        <p class="text-indigo-600/80 dark:text-indigo-400/80">Custom Python scripts for automating repetitive tasks and data processing workflows.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section id="testimonials" class="py-20 relative overflow-hidden" aria-labelledby="testimonials-heading">
+            <div class="absolute inset-0 bg-gradient-to-tr from-purple-50/90 to-indigo-50/90 dark:from-purple-950/90 dark:to-indigo-950/90 z-0"></div>
+            <div class="container mx-auto px-4 relative z-10">
+                <div class="text-center mb-16">
+                    <h2 id="testimonials-heading" class="text-3xl md:text-4xl font-bold mb-4 text-indigo-700 dark:text-indigo-400">Client Testimonials</h2>
+                    <p class="text-xl text-indigo-600/80 dark:text-indigo-300/80 max-w-3xl mx-auto">What my clients say about working with me</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <article class="bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm p-8 rounded-xl shadow-lg border border-indigo-100/80 dark:border-indigo-700/50 transform transition-transform hover:scale-105 hover:shadow-xl">
+                        <div class="flex items-center mb-4">
+                            <div class="w-10 h-10 bg-indigo-100 dark:bg-indigo-700/40 rounded-full flex items-center justify-center mr-3">
+                                <span class="text-indigo-600 dark:text-indigo-300 font-bold">C</span>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-indigo-700 dark:text-indigo-300">calgaryismep</h4>
+                                <p class="text-indigo-600/80 dark:text-indigo-400/80 text-sm">🇨🇦 Canada</p>
+                            </div>
+                        </div>
+                        <blockquote class="text-indigo-600/80 dark:text-indigo-400/80 italic">"Working with Arslan was a dream honestly. The response time and professionalism was unmatched, and he continuously guided me through my questions. He walked me through everything he did to help until I was satisfied. Thank you Arslan."</blockquote>
+                    </article>
+                    <article class="bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm p-8 rounded-xl shadow-lg border border-indigo-100/80 dark:border-indigo-700/50 transform transition-transform hover:scale-105 hover:shadow-xl">
+                        <div class="flex items-center mb-4">
+                            <div class="w-10 h-10 bg-indigo-100 dark:bg-indigo-700/40 rounded-full flex items-center justify-center mr-3">
+                                <span class="text-indigo-600 dark:text-indigo-300 font-bold">V</span>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-indigo-700 dark:text-indigo-300">valbrewster</h4>
+                                <p class="text-indigo-600/80 dark:text-indigo-400/80 text-sm">🇬🇧 United Kingdom</p>
+                            </div>
+                        </div>
+                        <blockquote class="text-indigo-600/80 dark:text-indigo-400/80 italic">"Another successful task completed by Arslan in actually one day not two. Even though I cannot articulate completely in 'tech' terms, Arslan somehow knows what I mean and exactly what is needed. He has made my life so much easier, so much more streamlined and accurate. Thank you Arslan."</blockquote>
+                    </article>
+                    <article class="bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm p-8 rounded-xl shadow-lg border border-indigo-100/80 dark:border-indigo-700/50 transform transition-transform hover:scale-105 hover:shadow-xl">
+                        <div class="flex items-center mb-4">
+                            <div class="w-10 h-10 bg-indigo-100 dark:bg-indigo-700/40 rounded-full flex items-center justify-center mr-3">
+                                <span class="text-indigo-600 dark:text-indigo-300 font-bold">G</span>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-indigo-700 dark:text-indigo-300">Gil V</h4>
+                                <p class="text-indigo-600/80 dark:text-indigo-400/80 text-sm">🇺🇸 United States of America</p>
+                            </div>
+                        </div>
+                        <blockquote class="text-indigo-600/80 dark:text-indigo-400/80 italic">"Arslan is my go-to professional for anything related to Google Sheets and macros. His expertise and efficiency have made a significant impact on my projects. He not only delivers high-quality work consistently but also offers valuable insights that enhance our workflows. Highly recommended!"</blockquote>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 relative overflow-hidden" aria-labelledby="contact-heading">
+            <div class="absolute inset-0 bg-gradient-to-br from-indigo-50/90 to-purple-50/90 dark:from-indigo-950/90 dark:to-purple-950/90 z-0"></div>
+            <div class="container mx-auto px-4 relative z-10">
+                <div class="text-center mb-16">
+                    <h2 id="contact-heading" class="text-3xl md:text-4xl font-bold mb-4 text-indigo-700 dark:text-indigo-400">Get in Touch</h2>
+                    <p class="text-xl text-indigo-600/80 dark:text-indigo-300/80 max-w-3xl mx-auto">Let's work together on your next project</p>
+                </div>
+                <div class="max-w-4xl mx-auto">
+                    <article class="bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm p-8 rounded-xl shadow-lg border border-indigo-100/80 dark:border-indigo-700/50">
+                        <div class="text-center mb-8">
+                            <h3 class="text-2xl font-semibold mb-4 text-indigo-700 dark:text-indigo-300">Email</h3>
+                            <a href="mailto:meemalifaaeen@gmail.com" class="text-xl text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 transition">meemalifaaeen@gmail.com</a>
+                        </div>
+                        <div class="flex justify-center space-x-6">
+                            <a href="https://www.fiverr.com/meemalifaaeen" target="_blank" rel="noopener noreferrer" class="text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 transition">
+                                <img src="assets/fiverr.svg" alt="Fiverr Profile" class="h-8 w-8">
+                            </a>
+                            <a href="https://www.upwork.com/freelancers/~016cbc4535ac1533ef" target="_blank" rel="noopener noreferrer" class="text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 transition">
+                                <img src="assets/upwork.svg" alt="Upwork Profile" class="h-8 w-8">
+                            </a>
+                            <a href="https://github.com/alifaaeen" target="_blank" rel="noopener noreferrer" class="text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 transition">
+                                <img src="assets/github.svg" alt="GitHub Profile" class="h-8 w-8">
+                            </a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="relative py-12 overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-tr from-indigo-900/95 to-purple-900/95 dark:from-indigo-950 dark:to-purple-950 z-0"></div>
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="border-t border-indigo-800/30 pt-8 text-center">
+                <p class="text-indigo-200/70">&copy; 2024 Arslan. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const themeToggle = document.getElementById('theme-toggle');
+            const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
+            
+            mobileMenuButton.addEventListener('click', function() {
+                mobileMenu.classList.toggle('hidden');
+            });
+            
+            // Close mobile menu when clicking on a link
+            const mobileLinks = mobileMenu.querySelectorAll('a');
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+            
+            // Check for saved theme preference, default to light mode if none saved
+            if (localStorage.theme === 'dark') {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+                localStorage.theme = 'light'; // Set default theme to light
+            }
+            
+            // Toggle dark mode
+            function toggleDarkMode() {
+                if (document.documentElement.classList.contains('dark')) {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.theme = 'light';
+                } else {
+                    document.documentElement.classList.add('dark');
+                    localStorage.theme = 'dark';
+                }
+            }
+            
+            // Add event listeners to both desktop and mobile theme toggles
+            themeToggle.addEventListener('click', toggleDarkMode);
+            mobileThemeToggle.addEventListener('click', toggleDarkMode);
+        });
+    </script>
 </body>
 </html>

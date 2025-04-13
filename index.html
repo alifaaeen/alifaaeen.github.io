@@ -30,42 +30,52 @@
         	<div class="hero-content">
                 <h1>Hi, I'm <span>Arslan</span></h1>
                 <h2>Spreadsheet Automation Specialist</h2>
-                <p>With over 3 years of experience in automation and data processing, I’m here to help make your tasks easier and your work more efficient.</p>
+                <p>With over 3 years of experience in automation and data processing, I'm here to help make your tasks easier and your work more efficient.</p>
             </div>
         </section>
 
         <section id="about" class="section fade-in">
             <h2 class="section-title">ABOUT ME</h2>
             <p class="about-text">
-                I’m a freelance professional based in Islamabad, Pakistan 🇵🇰, with over three years of experience in automating workflows and creating tailored applications using Excel and Google Sheets.
+                I'm a freelance professional based in Islamabad, Pakistan 🇵🇰, with over three years of experience in automating workflows and creating tailored applications using Excel and Google Sheets.
                 <br><br>
-				My Excel journey started way back in 2022, when I read a quote that stayed with me: <i>"The economy of this world runs on two things—petrol and Excel."</i> It was a straightforward quote, but it made me realize the potential of Excel, and since then, I committed myself to learning it. Over the years, I’ve helped countless clients leverage Excel to optimize their workflows, elevate their business processes, and take their operations to new heights.
+				My Excel journey started way back in 2022, when I read a quote that stayed with me: <i>"The economy of this world runs on two things—petrol and Excel."</i> It was a straightforward quote, but it made me realize the potential of Excel, and since then, I committed myself to learning it. Over the years, I've helped countless clients leverage Excel to optimize their workflows, elevate their business processes, and take their operations to new heights.
 				<br><br>
-				I’ve worked on platforms like Upwork and Fiverr, completing more than 500 projects, all with five-star ratings. Each project taught me something new, but the satisfaction of helping clients transform their work through automation is what truly drives me.
+				I've worked on platforms like Upwork and Fiverr, completing more than 500 projects, all with five-star ratings. Each project taught me something new, but the satisfaction of helping clients transform their work through automation is what truly drives me.
 				<br><br>
-				Aside from my expertise in Excel, I’m also a Chartered Accountant student, on my way to becoming a Chartered Accountant, InshaAllah. This background has given me a solid understanding of accounting and tax, which has been invaluable as I’ve worked with some of Pakistan’s largest companies, helping them doing their of taxes and accounting.
+				Aside from my expertise in Excel, I'm also a Chartered Accountant student, on my way to becoming a Chartered Accountant, InshaAllah. This background has given me a solid understanding of accounting and tax, which has been invaluable as I've worked with some of Pakistan's largest companies, helping them doing their of taxes and accounting.
 				<br><br>
 				With all that experience under my belt, I'm here to assist you in reaching your objectives. We can work together to streamline your processes and bring your business to the next level.
             </p>
         </section>
 
-        <!-- <section id="portfolio" class="section fade-in">
+        <section id="portfolio" class="section fade-in">
             <h2 class="section-title">PORTFOLIO</h2>
             <div class="portfolio-grid">
-                <div class="portfolio-item">
-                    <img src="https://placehold.co/290x200" alt="Animal Sheet Project">
+                <!-- Portfolio items will be loaded dynamically -->
+            </div>
+        </section>
+
+        <!-- Portfolio Popup -->
+        <div class="portfolio-popup">
+            <div class="popup-content">
+                <button class="popup-close">&times;</button>
+                <div class="popup-image">
+                    <img src="" alt="Portfolio Project">
                 </div>
-                <div class="portfolio-item">
-                    <img src="https://placehold.co/290x200" alt="Purple Device Project">
-                </div>
-                <div class="portfolio-item">
-                    <img src="https://placehold.co/290x200" alt="Suplo Store Project">
-                </div>
-                <div class="portfolio-item">
-                    <img src="https://placehold.co/290x200" alt="Coffee and Notes Project">
+                <div class="popup-details">
+                    <h3></h3>
+                    <div class="popup-meta">
+                        <span class="popup-client"></span>
+                        <span class="popup-year"></span>
+                    </div>
+                    <p class="popup-description"></p>
+                    <div class="popup-technologies">
+                        <!-- Technologies will be loaded dynamically -->
+                    </div>
                 </div>
             </div>
-        </section> -->
+        </div>
 
         <section id="services" class="section fade-in">
             <h2 class="section-title">Services</h2>
@@ -156,5 +166,132 @@
             <p>Made with ❤️ by Arslan</p>
         </footer>
     </div>
+
+    <script>
+        // Load portfolio data
+        async function loadPortfolioData() {
+            try {
+                console.log('Fetching portfolio data...');
+                const response = await fetch('portfolio-data.json');
+                console.log('Response status:', response.status);
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                
+                const data = await response.json();
+                console.log('Portfolio data loaded:', data);
+                
+                // The data is an array, not an object with a portfolio property
+                return data;
+            } catch (error) {
+                console.error('Error loading portfolio data:', error);
+                return [];
+            }
+        }
+
+        // Create portfolio item HTML
+        function createPortfolioItem(item) {
+            return `
+                <div class="portfolio-item" data-id="${item.id}">
+                    <img src="${item.imageUrl}" alt="${item.altText}" onerror="this.src='assets/placeholder.jpg'">
+                    <div class="portfolio-overlay">
+                        <h3>${item.title}</h3>
+                        <p>${item.shortDescription}</p>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Create technology tag HTML
+        function createTechnologyTag(tech) {
+            return `<span class="tech-tag">${tech}</span>`;
+        }
+
+        // Initialize portfolio
+        async function initializePortfolio() {
+            console.log('Initializing portfolio...');
+            const portfolioGrid = document.querySelector('.portfolio-grid');
+            
+            if (!portfolioGrid) {
+                console.error('Portfolio grid element not found!');
+                return;
+            }
+            
+            const portfolioData = await loadPortfolioData();
+            console.log('Portfolio data for rendering:', portfolioData);
+            
+            if (!portfolioData || portfolioData.length === 0) {
+                console.error('No portfolio data available!');
+                portfolioGrid.innerHTML = '<p>No portfolio items available.</p>';
+                return;
+            }
+            
+            // Populate portfolio grid
+            portfolioGrid.innerHTML = portfolioData.map(item => createPortfolioItem(item)).join('');
+            console.log('Portfolio grid populated with', portfolioData.length, 'items');
+
+            // Setup popup functionality
+            const popup = document.querySelector('.portfolio-popup');
+            const popupClose = document.querySelector('.popup-close');
+            const popupImage = popup.querySelector('img');
+            const popupTitle = popup.querySelector('h3');
+            const popupClient = popup.querySelector('.popup-client');
+            const popupYear = popup.querySelector('.popup-year');
+            const popupDescription = popup.querySelector('.popup-description');
+            const popupTechnologies = popup.querySelector('.popup-technologies');
+
+            // Add click handlers to portfolio items
+            document.querySelectorAll('.portfolio-item').forEach(item => {
+                item.addEventListener('click', () => {
+                    const projectId = parseInt(item.dataset.id);
+                    console.log('Portfolio item clicked, ID:', projectId);
+                    
+                    const projectData = portfolioData.find(p => p.id === projectId);
+                    console.log('Project data for popup:', projectData);
+                    
+                    if (!projectData) {
+                        console.error('Project data not found for ID:', projectId);
+                        return;
+                    }
+                    
+                    popupImage.src = projectData.imageUrl;
+                    popupImage.alt = projectData.altText;
+                    popupTitle.textContent = projectData.title;
+                    popupClient.textContent = projectData.client;
+                    popupYear.textContent = projectData.year;
+                    popupDescription.textContent = projectData.fullDescription;
+                    popupTechnologies.innerHTML = projectData.technologies.map(tech => createTechnologyTag(tech)).join('');
+
+                    popup.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                });
+            });
+
+            // Close popup handlers
+            popupClose.addEventListener('click', () => {
+                popup.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+
+            popup.addEventListener('click', (e) => {
+                if (e.target === popup) {
+                    popup.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            });
+
+            // Close popup with Escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && popup.classList.contains('active')) {
+                    popup.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            });
+        }
+
+        // Initialize when DOM is loaded
+        document.addEventListener('DOMContentLoaded', initializePortfolio);
+    </script>
 </body>
 </html>

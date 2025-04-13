@@ -1,0 +1,59 @@
+[
+    {
+        "id": 1,
+        "title": "Amazon Products Scraping",
+        "shortDescription": "Scraped 60 Amazon categories with 100,000+ products",
+        "fullDescription": "In this project, the client tasked me with scraping 60 categories, each containing various subcategories, from Amazon. Each category and its subcategories had 100 products, all of which were Amazon's best sellers. I had to scrape every single product, but it wasn't as straightforward as it sounds. There were specific criteria that each product needed to meet. In addition to that, I had to download ALL the product pictures. This project turned out to be quite exciting as I successfully scraped over 100,000 products and filtered out many based on the specified criteria.",
+        "imageUrl": "assets/portfolio/Amazon scraping.webp",
+        "altText": "Amazon Products Scraping Project",
+        "technologies": [
+            "Web Scraping",
+            "Data Extraction"
+        ],
+        "client": "Private Client",
+        "year": 2023
+    },
+    {
+        "id": 2,
+        "title": "Excel Automation",
+        "shortDescription": "Automated financial reporting system for a Fortune 500 company",
+        "fullDescription": "Automated financial reporting system for a Fortune 500 company. Implemented VBA macros to streamline monthly reporting processes, reducing manual work by 80%. Created dynamic dashboards for real-time financial insights.",
+        "imageUrl": "assets/portfolio/YahooFinance.webp",
+        "altText": "Excel Automation Project",
+        "technologies": [
+            "Python",
+            "Excel",
+            "Financial Modeling"
+        ],
+        "client": "Fortune 500 Company",
+        "year": 2023
+    },
+    {
+        "id": 3,
+        "title": "Python PDF Page Deletion",
+        "shortDescription": "Python script to delete PDF pages based on bookmark content",
+        "fullDescription": "In this project, I developed an automation script using Python. The script deletes pages from PDF files if the bookmark related to that page contains specific words from a predefined list. The project was interesting as it required me to make the script efficient enough to handle more than 30,000 pages quickly. I successfully created a script that can handle such PDFs in under a minute.",
+        "imageUrl": "assets/portfolio/Python PDF.webp",
+        "altText": "Python PDF Page Deletion Project",
+        "technologies": [
+            "Python",
+            "PDF Processing"
+        ],
+        "client": "Private Client",
+        "year": 2023
+    },
+    {
+        "id": 4,
+        "title": "Holiday Bonus Calculator",
+        "shortDescription": "System to calculate employee bonus holidays monthly",
+        "fullDescription": "For this project, I developed a comprehensive bonus calculator designed to track and calculate employee bonus holidays on a monthly basis. The system was built to handle a complex set of conditions, ensuring employees' eligibility was accurately determined. Key features included: Monthly tracking of sick leave data, Eligibility checks based on consecutive weeks without sick leave, Automated calculation of bonus holidays for employees meeting the criteria. This solution streamlined the process, making bonus holiday management more efficient for the organization.",
+        "imageUrl": "assets/portfolio/Order.webp",
+        "altText": "Holiday Bonus Calculator Project",
+        "technologies": [
+            "Excel",
+            "HR Systems"
+        ],
+        "client": "Private Client",
+        "year": 2023
+    }
+]

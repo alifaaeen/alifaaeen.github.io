@@ -320,7 +320,7 @@ nav {
     position: absolute;
     top: 20px;
     right: 20px;
-    background: none;
+    background: #000;
     border: none;
     color: #fff;
     font-size: 30px;
@@ -335,7 +335,7 @@ nav {
 }
 
 .popup-close:hover {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: #333;
 }
 
 .popup-image {

@@ -68,10 +68,10 @@
             <div class="popup-content">
                 <button class="popup-close">&times;</button>
                 <div class="popup-image">
-                    <img src="" alt="Portfolio Project">
+                    <img src="assets/placeholder.jpg" alt="Portfolio Project">
                 </div>
                 <div class="popup-details">
-                    <h3></h3>
+                    <h3>Project Title</h3>
                     <div class="popup-meta">
                         <span class="popup-client"></span>
                         <span class="popup-year"></span>
@@ -155,13 +155,13 @@
 	                    </div>
 	                    <div class="social-icons">
 	                        <a href="https://www.fiverr.com/meemalifaaeen" class="social-icon" target="_blank">
-	                        	<img src="assets/fiverr.svg">
+	                        	<img src="assets/fiverr.svg" alt="Fiverr Profile">
 	                        </a>
 	                        <a href="https://www.upwork.com/freelancers/~016cbc4535ac1533ef" class="social-icon" target="_blank">
-	                        	<img src="assets/upwork.svg">
+	                        	<img src="assets/upwork.svg" alt="Upwork Profile">
 	                        </a>
 	                        <a href="https://github.com/alifaaeen" class="social-icon" target="_blank">
-	                        	<img src="assets/github.svg">
+	                        	<img src="assets/github.svg" alt="GitHub Profile">
 	                        </a>
 	                    </div>
                     </div>
@@ -346,6 +346,17 @@
             const popupDescription = popup.querySelector('.popup-description');
             const popupTechnologies = popup.querySelector('.popup-technologies');
 
+            // Reset popup to default state
+            function resetPopup() {
+                popupImage.src = 'assets/placeholder.jpg';
+                popupImage.alt = 'Portfolio Project';
+                popupTitle.textContent = 'Project Title';
+                popupClient.textContent = '';
+                popupYear.textContent = '';
+                popupDescription.textContent = '';
+                popupTechnologies.innerHTML = '';
+            }
+
             // Add click handlers to portfolio items
             document.querySelectorAll('.portfolio-item').forEach(item => {
                 item.addEventListener('click', () => {
@@ -360,13 +371,15 @@
                         return;
                     }
                     
-                    popupImage.src = projectData.imageUrl;
-                    popupImage.alt = projectData.altText;
-                    popupTitle.textContent = projectData.title;
-                    popupClient.textContent = projectData.client;
-                    popupYear.textContent = projectData.year;
-                    popupDescription.textContent = projectData.fullDescription;
-                    popupTechnologies.innerHTML = projectData.technologies.map(tech => createTechnologyTag(tech)).join('');
+                    // Update popup with project data
+                    popupImage.src = projectData.imageUrl || 'assets/placeholder.jpg';
+                    popupImage.alt = projectData.altText || 'Portfolio Project';
+                    popupTitle.textContent = projectData.title || 'Project Title';
+                    popupClient.textContent = projectData.client || '';
+                    popupYear.textContent = projectData.year || '';
+                    popupDescription.textContent = projectData.fullDescription || '';
+                    popupTechnologies.innerHTML = projectData.technologies ? 
+                        projectData.technologies.map(tech => createTechnologyTag(tech)).join('') : '';
 
                     popup.classList.add('active');
                     document.body.style.overflow = 'hidden';
@@ -377,12 +390,14 @@
             popupClose.addEventListener('click', () => {
                 popup.classList.remove('active');
                 document.body.style.overflow = '';
+                resetPopup();
             });
 
             popup.addEventListener('click', (e) => {
                 if (e.target === popup) {
                     popup.classList.remove('active');
                     document.body.style.overflow = '';
+                    resetPopup();
                 }
             });
 
@@ -391,6 +406,7 @@
                 if (e.key === 'Escape' && popup.classList.contains('active')) {
                     popup.classList.remove('active');
                     document.body.style.overflow = '';
+                    resetPopup();
                 }
             });
         }

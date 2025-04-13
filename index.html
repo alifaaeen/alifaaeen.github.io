@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" type="text/css" href="/styles.css?v=1.0">
     <title>Arslan.</title>
 </head>
 <body>
     <!-- Loading Screen -->
     <div class="loading-screen">
         <div class="loading-content">
-            <div class="loading-text" id="loadingText"></div>
+            <div class="loading-text" id="loadingText" style="color: #fff; font-size: 2.5rem; font-weight: bold; letter-spacing: 0.2em; text-shadow: 0 0 10px rgba(177, 122, 255, 0.3);"></div>
         </div>
     </div>
 
@@ -175,6 +175,18 @@
     </div>
 
     <script>
+        // Debug CSS loading
+        window.addEventListener('load', function() {
+            const styles = window.getComputedStyle(document.querySelector('.loading-text'));
+            console.log('Loading text styles:', {
+                color: styles.color,
+                fontSize: styles.fontSize,
+                fontWeight: styles.fontWeight,
+                letterSpacing: styles.letterSpacing,
+                textShadow: styles.textShadow
+            });
+        });
+
         // Loading Animation
         function typeWriter(text, element, callback) {
             if (!element) {

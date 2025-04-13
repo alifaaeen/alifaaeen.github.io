@@ -10,7 +10,7 @@
     <!-- Loading Screen -->
     <div class="loading-screen">
         <div class="loading-content">
-            <div class="loading-text"></div>
+            <div class="loading-text" id="loadingText"></div>
         </div>
     </div>
 
@@ -177,12 +177,18 @@
     <script>
         // Loading Animation
         function typeWriter(text, element, callback) {
+            if (!element) {
+                console.error('Loading text element not found');
+                if (callback) callback();
+                return;
+            }
+
             let i = 0;
             const speed = 150; // Typing speed in milliseconds
             
             function type() {
                 if (i < text.length) {
-                    element.innerHTML += text.charAt(i);
+                    element.textContent += text.charAt(i);
                     i++;
                     setTimeout(type, speed);
                 } else if (callback) {
@@ -211,32 +217,48 @@
 
         // Initialize loading and content
         async function initialize() {
-            const loadingScreen = document.querySelector('.loading-screen');
-            const loadingText = document.querySelector('.loading-text');
-            const container = document.querySelector('.container');
+            try {
+                const loadingScreen = document.querySelector('.loading-screen');
+                const loadingText = document.querySelector('#loadingText');
+                const container = document.querySelector('.container');
 
-            // Start typing animation
-            typeWriter('Arslan.', loadingText, async () => {
-                // Wait for a moment after typing
-                await new Promise(resolve => setTimeout(resolve, 500));
-                
-                // Preload images while showing typing animation
-                await preloadImages();
-                
-                // Fade out loading screen
-                loadingScreen.style.opacity = '0';
-                
-                // Show main content
-                container.style.display = 'block';
-                container.style.opacity = '0';
-                
-                // Remove loading screen and fade in content
-                setTimeout(() => {
-                    loadingScreen.style.display = 'none';
-                    container.style.opacity = '1';
-                    initializePortfolio(); // Initialize portfolio after content is visible
-                }, 500);
-            });
+                if (!loadingScreen || !loadingText || !container) {
+                    console.error('Required elements not found');
+                    return;
+                }
+
+                // Ensure loading screen is visible
+                loadingScreen.style.display = 'flex';
+                loadingScreen.style.opacity = '1';
+
+                // Start typing animation
+                typeWriter('Arslan.', loadingText, async () => {
+                    // Wait for a moment after typing
+                    await new Promise(resolve => setTimeout(resolve, 500));
+                    
+                    // Preload images while showing typing animation
+                    await preloadImages();
+                    
+                    // Fade out loading screen
+                    loadingScreen.style.opacity = '0';
+                    
+                    // Show main content
+                    container.style.display = 'block';
+                    container.style.opacity = '0';
+                    
+                    // Remove loading screen and fade in content
+                    setTimeout(() => {
+                        loadingScreen.style.display = 'none';
+                        container.style.opacity = '1';
+                        initializePortfolio(); // Initialize portfolio after content is visible
+                    }, 500);
+                });
+            } catch (error) {
+                console.error('Error in initialize:', error);
+                // Fallback: show content if loading fails
+                document.querySelector('.container').style.display = 'block';
+                document.querySelector('.loading-screen').style.display = 'none';
+            }
         }
 
         // Load portfolio data
@@ -362,7 +384,11 @@
         }
 
         // Start the loading animation when the page loads
-        document.addEventListener('DOMContentLoaded', initialize);
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initialize);
+        } else {
+            initialize();
+        }
     </script>
 </body>
 </html>

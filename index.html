@@ -7,7 +7,15 @@
     <title>Arslan.</title>
 </head>
 <body>
-    <div class="container">
+    <!-- Loading Screen -->
+    <div class="loading-screen">
+        <div class="loading-content">
+            <div class="loading-text"></div>
+        </div>
+    </div>
+
+    <!-- Main Content (initially hidden) -->
+    <div class="container" style="display: none;">
         <nav>
             <div class="logo">Arslan.</div>
             <div class="nav-links">
@@ -167,6 +175,70 @@
     </div>
 
     <script>
+        // Loading Animation
+        function typeWriter(text, element, callback) {
+            let i = 0;
+            const speed = 150; // Typing speed in milliseconds
+            
+            function type() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                } else if (callback) {
+                    callback();
+                }
+            }
+            
+            type();
+        }
+
+        // Preload images
+        function preloadImages() {
+            const images = document.querySelectorAll('img');
+            const imagePromises = Array.from(images).map(img => {
+                return new Promise((resolve, reject) => {
+                    if (img.complete) {
+                        resolve();
+                    } else {
+                        img.onload = resolve;
+                        img.onerror = resolve; // Resolve even on error to not block loading
+                    }
+                });
+            });
+            return Promise.all(imagePromises);
+        }
+
+        // Initialize loading and content
+        async function initialize() {
+            const loadingScreen = document.querySelector('.loading-screen');
+            const loadingText = document.querySelector('.loading-text');
+            const container = document.querySelector('.container');
+
+            // Start typing animation
+            typeWriter('Arslan.', loadingText, async () => {
+                // Wait for a moment after typing
+                await new Promise(resolve => setTimeout(resolve, 500));
+                
+                // Preload images while showing typing animation
+                await preloadImages();
+                
+                // Fade out loading screen
+                loadingScreen.style.opacity = '0';
+                
+                // Show main content
+                container.style.display = 'block';
+                container.style.opacity = '0';
+                
+                // Remove loading screen and fade in content
+                setTimeout(() => {
+                    loadingScreen.style.display = 'none';
+                    container.style.opacity = '1';
+                    initializePortfolio(); // Initialize portfolio after content is visible
+                }, 500);
+            });
+        }
+
         // Load portfolio data
         async function loadPortfolioData() {
             try {
@@ -289,8 +361,8 @@
             });
         }
 
-        // Initialize when DOM is loaded
-        document.addEventListener('DOMContentLoaded', initializePortfolio);
+        // Start the loading animation when the page loads
+        document.addEventListener('DOMContentLoaded', initialize);
     </script>
 </body>
 </html>

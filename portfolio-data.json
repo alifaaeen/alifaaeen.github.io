@@ -55,5 +55,52 @@
         ],
         "client": "Private Client",
         "year": 2023
+    },
+    {
+        "id": 5,
+        "title": "Transportation Management System",
+        "shortDescription": "Complete transportation management system with automated notifications",
+        "fullDescription": "Built a complete transportation management system using Google Sheets. Included a dashboard and tab for creating bus schedules, automatic SMS/email notifications to drivers, weekly reports generation, live driver tracking, and other essential features for efficient transportation management.",
+        "imageUrl": "assets/portfolio/transportation.webp",
+        "altText": "Transportation Management System Project",
+        "technologies": [
+            "Google Sheets",
+            "Automation",
+            "SMS Integration",
+            "Email Notifications"
+        ],
+        "client": "Private Client",
+        "year": 2023
+    },
+    {
+        "id": 6,
+        "title": "Movie Data Scraping",
+        "shortDescription": "Scraped detailed data for over 5,000 movies",
+        "fullDescription": "Scraped data for over 5,000 movies including titles, release dates, ratings and other details. Ensured accurate and well-organized data ready for analysis or reporting. Demonstrated large-scale web scraping capabilities.",
+        "imageUrl": "assets/portfolio/movie-scraping.webp",
+        "altText": "Movie Data Scraping Project",
+        "technologies": [
+            "Web Scraping",
+            "Data Extraction",
+            "Python"
+        ],
+        "client": "Private Client",
+        "year": 2023
+    },
+    {
+        "id": 7,
+        "title": "Point of Sale in Microsoft Excel",
+        "shortDescription": "Complete POS system with inventory management and reporting",
+        "fullDescription": "In this project, I developed a point of sale (POS) system. It included all the essential features like adding items, creating and printing bills, and managing sales transactions. The system made it easy to keep track of inventory, generate reports, and handle customer payments. It was a complete solution for any business looking to streamline their sales process!",
+        "imageUrl": "assets/portfolio/pos.webp",
+        "altText": "Excel POS System Project",
+        "technologies": [
+            "Excel",
+            "VBA",
+            "Inventory Management",
+            "POS System"
+        ],
+        "client": "Private Client",
+        "year": 2023
     }
 ]

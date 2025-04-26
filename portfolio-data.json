@@ -102,5 +102,20 @@
         ],
         "client": "Private Client",
         "year": 2023
-    }
+    },
+    {
+          "id": 8,
+          "title": "Chrome Extension to Scrape Facebook Ads",
+          "shortDescription": "Built a Chrome Extension to scrape Facebook Ads based on client-defined criteria",
+          "fullDescription": "Developed a custom Chrome Extension that scrapes Facebook Ads data according to specific filters defined by the client. The tool collects relevant ad information, filters based on duration and other metrics, and exports the data into a clean, structured CSV file. It was built for performance, ease of use, and to save manual effort during analysis.",
+          "imageUrl": "assets/portfolio/ChromeExtension.png",
+          "altText": "Chrome Extension for Facebook Ads Scraping",
+          "technologies": [
+            "Chrome Extension",
+            "JavaScript",
+            "Web Scraping"
+          ],
+          "client": "Private Client",
+          "year": 2025
+        }
 ]
